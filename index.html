@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+     
+    <!-- Iconscout CSS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- SheetJS (xlsx) Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <title>Status Water Spray System in Tanks</title> 
+</head>
+<body>
+    <div class="container">
+        <header>Status Water Spray System in Tanks</header>
+
+        <!-- Form for submitting data to connect.php -->
+        <form action="connect.php" method="post" id="dataForm">
+            <div class="form first">
+                <div class="details personal">
+                    <!-- Form Fields -->
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>TK no</label>
+                            <input type="text" name="TKno" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Observations</label>
+                            <input type="text" name="Observations" required>
+                        </div>
+                        <div class="input-field">
+                            <label>WO</label>
+                            <input type="text" name="WO" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Status</label>
+                            <input type="text" name="Status" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Type of defects</label>
+                            <input type="text" name="Typeofdefects" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Assigned to</label>
+                            <input type="text" name="Assignedto" required>
+                        </div>
+                    </div>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Last month checked</label>
+                            <input type="date" name="Lastmonthchecked" id="LastMonthChecked" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Next Due date</label>
+                            <input type="date" name="NextDuedate" id="NextDuedate" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Tested By</label>
+                            <input type="text" name="TestedBy" required>
+                        </div>
+                        <div class="input-field">
+                            <label>ETC(For attending defects)</label>
+                            <input type="text" name="ETC" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Type of tank</label>
+                            <select name="Typeoftank" required>
+                                <option value="">Select type of tank</option>
+                                <option value="Cone Roof">Cone Roof</option>
+                                <option value="External Floating Roof">External Floating Roof</option>
+                                <option value="Covered floating roof">Covered floating roof</option>
+                                <option value="Fixed Roof">Fixed Roof</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Tank service</label>
+                            <input type="text" name="Tankservice" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Petroleum class</label>
+                            <select name="Petroleumclass" required>
+                                <option value="">Select petroleum class</option>
+                                <option value="Class A">Class A</option>
+                                <option value="Class B">Class B</option>
+                                <option value="Class C">Class C</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+            <div class="button-container">
+            <!-- Submit Button for Main Form-->
+            <form action="connect.php" method="post" id="dataForm">
+                <button type="submit" class="submit">
+                    <span class="btnText">Submit</span>
+                </button>
+            </form>
+            </div>
+            </div>
+        </form>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            <!-- Separate Form for generating PDF--> 
+            <form action="generatepdf.php" method="post" id="pdfForm">
+                <input type="hidden" name="TKno" id="pdfTKno">
+                <input type="hidden" name="Observations" id="pdfObservations">
+                <input type="hidden" name="WO" id="pdfWO">
+                <input type="hidden" name="Status" id="pdfStatus">
+                <input type="hidden" name="Typeofdefects" id="pdfTypeofdefects">
+                <input type="hidden" name="Assignedto" id="pdfAssignedto">
+                <input type="hidden" name="Lastmonthchecked" id="pdfLastmonthchecked">
+                <input type="hidden" name="NextDuedate" id="pdfNextDuedate">
+                <input type="hidden" name="TestedBy" id="pdfTestedBy">
+                <input type="hidden" name="ETC" id="pdfETC">
+                <input type="hidden" name="Typeoftank" id="pdfTypeoftank">
+                <input type="hidden" name="Tankservice" id="pdfTankservice">
+                <input type="hidden" name="Petroleumclass" id="pdfPetroleumclass">
+                <button type="submit" class="pdf-submit">
+                    <span class="btnText">Save as PDF</span>
+                </button>
+            </form>
+
+            <!-- Separate Form for exporting to Excel--> 
+            <form action="export_to_excel.php" method="post" id="excelForm">
+                <button type="submit" class="excel-submit">
+                    <span class="btnText">Export to Excel</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
